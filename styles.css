@@ -9,6 +9,22 @@
     height: auto;
 }
 
+#pfp {
+    float: left;
+    width: 100px;
+    height: auto;
+}
+
+.blog-background-img {
+    width: 500px;
+    height: 200px;
+}
+
+#blog-header-img {
+    width: 100%;
+    height: 200px;
+}
+
 #Title {
     font-size: 40px;
     vertical-align: middle;
@@ -28,3 +44,14 @@
     float: left;
 }
 
+.float-parent-element { 
+    display: flex;
+} 
+
+#forum-pfp-box {
+    flex: 0 0 10%;
+}
+
+#forumpost {
+    flex: 1;
+}
