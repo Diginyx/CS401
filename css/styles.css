@@ -55,3 +55,14 @@
 #forumpost {
     flex: 1;
 }
+
+/* Forum Main Page */
+#ForumTopic {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+}
+
+#ForumTopic > * {
+    margin: 5px;
+}
