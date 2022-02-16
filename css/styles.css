@@ -2,9 +2,45 @@ ol li {
     list-style-type: none;
 }
 
-ol {
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ol, ul {
     list-style: none;
     padding-left: 0;
+}
+
+#navbar {
+    display: flex;
+}
+
+#navbar > ul {
+    width: 90%;
+    min-width: 90%;
+}
+
+#navbar > button {
+    flex-grow: 1;
+}
+
+#navbar > ul > a {
+    text-decoration: none;
+    color: black;
+}
+
+#navbar > ul > a > li:hover {
+    background-color: lightblue;
+}
+
+#navbar > ul > a > li {
+    border: 1px solid black;
+    min-width: 32%;
+}
+
+#sign-in {
+    margin-left: 10px;
 }
 
 p {
@@ -43,7 +79,7 @@ p {
 }
 
 .navitem {
-    margin: 10px;
+    padding: 10px;
 }
 
 .links {
@@ -184,7 +220,7 @@ input[type=button], input[type=submit], input[type=reset] {
     margin: 0px;
 }
 
-#TopicList > ol > * {
+#TopicList > ol > a > * {
     border-bottom: 1px solid #009879;
     padding: 10px;
 }
