@@ -1,3 +1,12 @@
+ol li {
+    list-style-type: none;
+}
+
+ol {
+    list-style: none;
+    padding-left: 0;
+}
+
 #header {
     display: flex;
     align-items: center;
@@ -48,6 +57,10 @@
     display: flex;
 } 
 
+.flex-child {
+    flex: 1;
+}
+
 #forum-pfp-box {
     flex: 0 0 10%;
 }
@@ -57,12 +70,114 @@
 }
 
 /* Forum Main Page */
+#ForumMain {
+    width: 90%
+}
+
+#ForumMain > * P{
+    min-width: 90%;
+}
+
+#ForumTopicList {
+    flex: 1;
+}
+
+
+/* Forum Topic Header */
+#ForumTopicContainer {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
 #ForumTopic {
     display: flex;
     align-items: center;
-    border: 1px solid black;
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
 }
 
 #ForumTopic > * {
     margin: 5px;
+}
+
+.ForumSummary > hr {
+   border: 1px solid #009879;
+}
+
+.ForumSummaryMainInfo, .ForumSummaryStats {
+    display: table-cell;
+    margin-left: 0px;
+}
+
+.ForumSummaryMainInfo {
+    width: 100%;
+}
+
+/* Topic Generator */
+#TopicGeneratorContainer {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+#title {
+    font-size: 16px;
+}
+
+input[type=text] {
+    width: 20%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-family: "Times New Roman", Times, serif;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 0px;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 0px;
+    box-sizing: border-box;
+    font-family: "Times New Roman", Times, serif;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: none;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* Topic List */
+#TopicList {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    margin-left: 10px;
+}
+
+#TopicList > h2 {
+    font-size: 40px;
+    margin: 0px;
+}
+
+#TopicList > ol > * {
+    border-bottom: 1px solid #009879;
+    padding: 10px;
 }

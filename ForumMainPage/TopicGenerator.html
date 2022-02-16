@@ -1,13 +1,20 @@
 <h2 id="TopicGeneratorHeader">Create New Topic</h2>
-<div id="TopicGenerator">
-    <div id="TopicGeneratorTitle">
-        Title
-    </div>
-    <div id="TopicGeneratorDescription">
-        <div id="topic-generator-description-header">
-            Description
+<div id="TopicGeneratorContainer">
+    <form>
+        <div>
+            <label for="title">Title</label>
         </div>
-        <input id="TopicGeneratorDescriptionInput" value="Enter Description Here"></input>
-    </div>
-    <button>Submit Topic</button>
+        <div>
+            <input type="text" id="title" name="title" placeholder="Enter Title Here">
+        </div>
+        <div>
+            <label for="description">Description</label>
+        </div>
+        <div>
+            <textarea placeholder="Enter Descripition Here"></textarea>
+        </div>
+        <div id="SumbitTopicButton">
+            <input type="submit" value="Submit Topic">
+        </div>
+      </form>
 </div>
