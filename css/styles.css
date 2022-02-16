@@ -7,18 +7,16 @@ ol {
     padding-left: 0;
 }
 
+p {
+    font-family: "Times New Roman", Times, serif;
+}
+
 #header {
     display: flex;
     align-items: center;
 }
 
 #Logo {
-    float: left;
-    width: 100px;
-    height: auto;
-}
-
-#pfp {
     float: left;
     width: 100px;
     height: auto;
@@ -34,8 +32,8 @@ ol {
     height: 200px;
 }
 
-#Title {
-    font-size: 40px;
+#page-title {
+    font-size: 80px;
     vertical-align: middle;
 }
 
@@ -61,29 +59,41 @@ ol {
     flex: 1;
 }
 
-#forum-pfp-box {
-    flex: 0 0 10%;
-}
-
 #forumpost {
     flex: 1;
 }
 
-/* Forum Main Page */
-
-#ForumMain {
+.left-list {
     width: 90%
 }
 
-#ForumMain > * p {
+.left-list > * p {
     min-width: 90%;
 }
 
-#ForumTopicList {
+.ForumTopicList {
     flex: 1;
 }
 
+.GeneratorContainer {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* Forum Main Page */
+
 /* Forum Topic Header */
+
+#forum-pfp {
+    float: left;
+    width: 100px;
+    height: auto;
+}
+
+#ForumTopicHeaderHeader {
+    font-size: 40px;
+}
 
 #ForumTopicContainer {
     border-radius: 5px;
@@ -117,12 +127,6 @@ ol {
 }
 
 /* Topic Generator */
-
-#TopicGeneratorContainer {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
 
 #title {
     font-size: 16px;
@@ -183,4 +187,111 @@ input[type=button], input[type=submit], input[type=reset] {
 #TopicList > ol > * {
     border-bottom: 1px solid #009879;
     padding: 10px;
+}
+
+/* ForumPage */
+
+/* Forum Post */
+
+#ForumTitle {
+    font-size: 40px;
+}
+
+#forum-post-container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+#forum-pfp-box {
+    margin-right: 10px;
+}
+
+/* Forum Generator */
+
+/* Blog Main Page */
+
+/* Blog Grid */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+}
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+#BlogMainPageTitle {
+    font-size: 40px;
+}
+
+/* Blog Block */
+#blog-block > a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Blog Page */
+
+/* Blog Header */
+
+#blog-post {
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+#blog-header {
+    border: 1px solid black;
+}
+
+#blog-header-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#blog-header-image-div {
+    position: relative;
+}
+
+.centered {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    color: black;
+    font-size: 50px;
+}
+
+#blog-header-description {
+    border-top: 1px solid black;
+}
+
+#blog-comments {
+    margin-right: 10px;
+}
+
+#blog-author-info {
+    border-bottom: 1px solid black;
+}
+
+#blog-pfp-box {
+    display: flex;
+    align-items: center;
+}
+
+#blog-pfp {
+    width: 100px;
+    height: 100px;
+}
+
+#blog-author {
+    margin-left: 10px;
 }
