@@ -36,7 +36,7 @@ ol, ul {
 
 #navbar > ul > a > li {
     border: 1px solid black;
-    min-width: 32%;
+    min-width: 30%;
 }
 
 #sign-in {
