@@ -70,6 +70,7 @@ ol {
 }
 
 /* Forum Main Page */
+
 #ForumMain {
     width: 90%
 }
@@ -84,6 +85,7 @@ ol {
 
 
 /* Forum Topic Header */
+
 #ForumTopicContainer {
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -116,6 +118,7 @@ ol {
 }
 
 /* Topic Generator */
+
 #TopicGeneratorContainer {
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -166,6 +169,7 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
 /* Topic List */
+
 #TopicList {
     border-radius: 5px;
     background-color: #f2f2f2;
