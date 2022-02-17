@@ -21,7 +21,12 @@ ol, ul {
     min-width: 90%;
 }
 
-#navbar > button {
+#navbar > a  {
+    width: 100%;
+    min-width: 100%;
+}
+
+#navbar > div {
     flex-grow: 1;
 }
 
@@ -111,10 +116,11 @@ p {
     flex: 1;
 }
 
-.GeneratorContainer {
+.container {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+    border: 3px solid green;
 }
 
 /* Forum Main Page */
@@ -252,7 +258,7 @@ input[type=button], input[type=submit], input[type=reset] {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    background-color: #2196F3;
+    background-color: green;
     padding: 10px;
 }
 .grid-item {
@@ -275,18 +281,24 @@ input[type=button], input[type=submit], input[type=reset] {
 
 /* Blog Page */
 
+#blog-header {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    border: 3px solid green;
+}
+
 /* Blog Header */
 
 #blog-post {
     margin-top: 10px;
-    border: 1px solid black;
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+    border: 3px solid green;
 }
 
 #blog-header {
-    border: 1px solid black;
+    border: 3px solid green;
 }
 
 #blog-header-img {
@@ -331,3 +343,27 @@ input[type=button], input[type=submit], input[type=reset] {
 #blog-author {
     margin-left: 10px;
 }
+
+/* SignInPage */
+/*
+#username {
+    width: auto;
+}
+
+#password {
+    width: auto;
+}
+
+#SignInContainer {
+    display: inline-block;
+    width: auto;
+    height: auto;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+  */
