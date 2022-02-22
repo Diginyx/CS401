@@ -3,6 +3,7 @@ CREATE TABLE `heroku_3f46b86673827e3`.`user` (
   `UserName` VARCHAR(50) NOT NULL,
   `Password` VARCHAR(100) NOT NULL,
   `UserRole` VARCHAR(50) NOT NULL,
+  `ProfilePicture` VARCHAR(256) NOT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE INDEX `UserName_UNIQUE` (`UserName` ASC));
 
