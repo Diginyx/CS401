@@ -1,0 +1,48 @@
+CREATE TABLE `heroku_3f46b86673827e3`.`user` (
+  `UserID` INT NOT NULL AUTO_INCREMENT,
+  `UserName` VARCHAR(50) NOT NULL,
+  `Password` VARCHAR(100) NOT NULL,
+  `UserRole` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`UserID`),
+  UNIQUE INDEX `UserName_UNIQUE` (`UserName` ASC));
+
+  
+CREATE TABLE `heroku_3f46b86673827e3`.`topic` (
+  `TopicID` INT NOT NULL AUTO_INCREMENT,
+  `Title` VARCHAR(100) NOT NULL,
+  `Description` TINYTEXT NOT NULL,
+  PRIMARY KEY (`TopicID`),
+  UNIQUE INDEX `Title_UNIQUE` (`Title` ASC));
+
+CREATE TABLE `heroku_3f46b86673827e3`.`post` (
+  `PostID` INT NOT NULL AUTO_INCREMENT,
+  `TopicID` INT NOT NULL,
+  `AuthorID` INT NOT NULL,
+  `Title` VARCHAR(100) NOT NULL,
+  `Date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Content` LONGTEXT NOT NULL,
+  PRIMARY KEY (`PostID`),
+  UNIQUE INDEX `Title_UNIQUE` (`Title` ASC),
+  FOREIGN KEY (TopicID) REFERENCES topic(TopicID),
+  FOREIGN KEY (AuthorID) REFERENCES user(UserID));
+  
+  CREATE TABLE `heroku_3f46b86673827e3`.`blog` (
+  `BlogID` INT NOT NULL AUTO_INCREMENT,
+  `CoverImage` VARCHAR(256) NOT NULL,
+  `Title` VARCHAR(100) NOT NULL,
+  `Description` TINYTEXT NOT NULL,
+  `Content` LONGTEXT NOT NULL,
+  PRIMARY KEY (`BlogID`),
+  UNIQUE INDEX `Title_UNIQUE` (`Title` ASC));
+
+  CREATE TABLE `heroku_3f46b86673827e3`.`blogcomment` (
+  `CommentID` INT NOT NULL,
+  `AuthorID` INT NOT NULL,
+  `Content` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY (`CommentID`),
+  FOREIGN KEY (AuthorID) REFERENCES user(UserID));
+
+
+
+
+
