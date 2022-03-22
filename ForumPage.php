@@ -1,5 +1,5 @@
 <html>
-    <?php include_once("header.html"); ?>
+    <?php include_once("header.php"); ?>
     <div class="float-parent-element">
         <div class="left-list">
             <?php include_once("ForumPage/ForumPost.html"); ?>

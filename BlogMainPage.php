@@ -1,5 +1,5 @@
 <html>
-    <?php include_once("header.html"); ?>
+    <?php include_once("header.php"); ?>
     <?php include_once("BlogMainPage/BlogGrid.html"); ?>
     <div class="grid-container">
         <div class="grid-item">

@@ -49,11 +49,23 @@ private $pass = "3a70776a";
         return $conn->query("SELECT * FROM user");
     }
 
+    public function verifyLogin($username, $password) {
+        echo "hello";
+        $conn = $this->getConnection();
+        $getQuery = "SELECT * FROM user WHERE UserName = :UserName AND Password = :Password";
+        $q = $conn->prepare($getQuery);
+        $q->bindParam(":UserName", $username);
+        $q->bindParam(":Password", $password);
+        $q->execute();
+        $result = $q->fetchAll();
+        return reset($result);
+    }
+
 }
 
 $db = new Dao();
 
-$db->saveUser('test2', 'pass', 'user');
+// $db->saveUser('ckennington@gmail.com', 'lollipop', 'user');
 
 $users = $db->getUsers();
 
@@ -61,18 +73,9 @@ foreach ($users as $user) {
     echo $user['UserName'] . "\n";
 }
 
+$user = $db->verifyLogin('test2', 'pass');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if($user)
+{
+    echo $user['UserID'] . "\n";
+}
