@@ -12,7 +12,8 @@ $password = (isset($_POST["password"])) ? $_POST["password"] : "";
 $user = $db->verifyLogin($username, $password);
 if ($user) {
   $_SESSION['username'] = $username;
-  $_SESSION['ProfilePicture'] = $db->getPfp($username);
+  $user = $db->getUser($username);
+  $_SESSION['ProfilePicture'] = $db->getPfp($user['UserID']);
   $_SESSION["access_granted"] = true;
   header("Location:../ForumMainPage.php");
 } else {

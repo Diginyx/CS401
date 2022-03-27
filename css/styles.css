@@ -299,6 +299,11 @@ input[type=button], input[type=submit], input[type=reset] {
     border: 3px solid green;
 }
 
+#blog-comment-pfp {
+    width: 100px;
+    height: 100px;
+}
+
 #blog-header {
     border: 3px solid green;
 }
@@ -344,6 +349,10 @@ input[type=button], input[type=submit], input[type=reset] {
 
 #blog-author {
     margin-left: 10px;
+}
+
+#blog-comments {
+    margin-top: 10px;
 }
 
 /* SignInPage */

@@ -74,11 +74,21 @@ private $pass = "3a70776a";
         return reset($result);
     }
 
-    public function getPfp($username) {
+    public function getPfp($ID) {
         $conn = $this->getConnection();
-        $getQuery = "SELECT ProfilePicture FROM user WHERE UserName = :UserName";
+        $getQuery = "SELECT ProfilePicture FROM user WHERE UserID = :UserID";
         $q = $conn->prepare($getQuery);
-        $q->bindParam(":UserName", $username);
+        $q->bindParam(":UserID", $ID);
+        $q->execute();
+        $result = $q->fetch();
+        return reset($result);
+    }
+
+    public function getUsername ($ID) {
+        $conn = $this->getConnection();
+        $getQuery = "SELECT UserName FROM user WHERE UserID = :UserID";
+        $q = $conn->prepare($getQuery);
+        $q->bindParam(":UserID", $ID);
         $q->execute();
         $result = $q->fetch();
         return reset($result);
@@ -87,6 +97,9 @@ private $pass = "3a70776a";
 }
 
 // $db = new Dao();
+
+// echo $db->getPfp(164);
+
 
 // $comments = $db->getComments();
 // foreach ($comments as $comment)
