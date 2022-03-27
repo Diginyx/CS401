@@ -2,7 +2,7 @@
 <div class="container">
     <form action="ForumPage/forumPostHandler.php" method="POST">
         <?php
-            echo '<input type="hidden" id="pageID" name="pageID" value=' . $_GET['id'] . '/>';
+            echo '<input type="hidden" id="pageID" name="pageID" value=' . $_GET['id'] . '>';
         ?>
         <div>
             <textarea type="text" id="ForumPost" name="ForumPost" placeholder="Enter Text Here"></textarea>

@@ -1,18 +1,27 @@
 <?php
+    require_once "Dao.php";
+    $db = new Dao();
 
-// echo "<h2 id='forum-title'">;
+    $title = $db->getForum($_GET['id'])['Title'];
 
+    echo "<h2 id='forum-title'>" . $title . "</h2>";
+    echo "<div id='forum-post-container' class='container'>";
+
+    $posts = $db->getForumPosts($_GET['id']);
+    if($posts)
+    {
+        foreach ($posts as $post)
+        {
+            echo "<div class='forum-post'>";
+            echo "<img src=" . $db->getPfp($post['AuthorID']) . " class='forum-post-pfp'>"; 
+            echo "<p>" . htmlspecialchars($post['Date']) . "</p>";
+            echo "<p>" . nl2br(str_replace(' ', '&nbsp;', htmlspecialchars($post['Content']))) . "</p>";
+            echo "</div>";
+            echo "<hr>";
+        }
+    }
+    else{
+        echo "<h3> Be the first to post to this forum! </h3>";
+    }
+    echo "</div>";
 ?>
-
-<h2 id="forum-title"> Forum Title </h2>
-<div id="forum-post-container" class="float-parent-element container">
-    <div id="forum-pfp-box" class="float-child-element">
-        <img src="../images/obiwan.jpeg" id="forum-pfp">
-    </div>
-    <div class="float-child-element">
-        <p>Date posted</p>
-        <p>
-            Stuff
-        </p> 
-    </div>
-</div>

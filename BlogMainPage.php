@@ -1,9 +1,10 @@
+
 <html>
     <?php include_once("header.php"); ?>
     <?php include_once("BlogMainPage/BlogGrid.html"); ?>
     <div class="grid-container">
         <div class="grid-item">
-            <?php include("BlogMainPage/BlogBlock.html"); ?>
+            <?php include("BlogMainPage/BlogBlock.php?id=1"); ?>
         </div>
         <div class="grid-item">
             <?php include("BlogMainPage/BlogBlock.html"); ?>

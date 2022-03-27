@@ -25,6 +25,7 @@ p {
 
 .float-parent-element { 
     display: flex;
+    width: 100%;
 } 
 
 .flex-child {
@@ -32,7 +33,7 @@ p {
 }
 
 .left-list {
-    width: 90%
+    width: 85%;
 }
 
 .left-list > * p {
@@ -119,10 +120,15 @@ p {
 
 /* Forum Topic Header */
 
+.ForumTopicList {
+    width: 15%;
+}
+
 #forum-pfp {
     float: left;
     width: 100px;
     height: auto;
+    margin-right: 10px;
 }
 
 #forum-topic-header-header {
@@ -231,14 +237,20 @@ input[type=button], input[type=submit], input[type=reset] {
     font-size: 40px;
 }
 
+.forum-post {
+    height: auto;
+    word-wrap: break-word;
+}
+
+.forum-post-pfp {
+    height: auto;
+    width: 100px;
+}
+
 #forum-post-container {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-}
-
-#forum-pfp-box {
-    margin-right: 10px;
 }
 
 /* Forum Generator */

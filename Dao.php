@@ -5,9 +5,6 @@ private $db = "heroku_3f46b86673827e3";
 private $user = "b1aa32eb4ad845";
 private $pass = "3a70776a";
 
-
-
-
     public function getConnection () {
         return
         new PDO("mysql:host={$this->host};dbname={$this->db}", $this->user,
@@ -58,6 +55,41 @@ private $pass = "3a70776a";
         return $result;
     }
 
+    public function saveForum ($title, $authorID, $description)
+    {
+        $conn = $this->getConnection();
+        $saveQuery =
+            "INSERT INTO forum
+            (Title, AuthorID, Description)
+            VALUES
+            (:Title, :AuthorID, :Description)";
+        $q = $conn->prepare($saveQuery);
+        $q->bindParam(":Title", $title);
+        $q->bindParam(":AuthorID", $authorID);
+        $q->bindParam(":Description", $description);
+        $q->execute();
+    }
+
+    public function getForum($forumID) {
+        $conn = $this->getConnection();
+        $getQuery = "SELECT * FROM forum WHERE ForumID = :ForumID";
+        $q = $conn->prepare($getQuery);
+        $q->bindParam(":ForumID", $forumID);
+        $q->execute();
+        $result = $q->fetchAll();
+        return reset($result);
+    }
+
+    public function getForums() {
+        $conn = $this->getConnection();
+        return $conn->query("SELECT * FROM forum");
+    }
+
+    public function getBlogs() {
+        $conn = $this->getConnection();
+        return $conn->query("SELECT * FROM blog");
+    }
+
     public function saveUser ($userName, $password, $UserRole, $ProfilePicture) {
         $conn = $this->getConnection();
         $saveQuery = 
@@ -89,11 +121,21 @@ private $pass = "3a70776a";
         return reset($result);
     }
 
-    public function getUser($username) {
+    public function getUserID($username) {
         $conn = $this->getConnection();
-        $getQuery = "SELECT * FROM user WHERE UserName = :UserName";
+        $getQuery = "SELECT UserID FROM user WHERE Username = :Username";
         $q = $conn->prepare($getQuery);
-        $q->bindParam(":UserName", $username);
+        $q->bindParam(":Username", $username);
+        $q->execute();
+        $result = $q->fetch();
+        return reset($result);
+    }
+
+    public function getUser($ID) {
+        $conn = $this->getConnection();
+        $getQuery = "SELECT * FROM user WHERE UserId = :UserID";
+        $q = $conn->prepare($getQuery);
+        $q->bindParam(":UserID", $ID);
         $q->execute();
         $result = $q->fetchAll();
         return reset($result);
@@ -121,15 +163,32 @@ private $pass = "3a70776a";
 
 }
 
-// $db = new Dao();
+$db = new Dao();
+$blogs = $db->getBlogs();
+foreach ($blogs as $blog)
+{
+    echo $blog['BlogID'] . "\n";
+}
+// $forums = $db->getForums();
+// foreach ($forums as $forum)
+// {
+//     echo $forum['ForumID'] . "\n";
+// }
+// $userID = $db->getUserID('obiwan');
+// $user = $db->getUser($userID);
+// echo $user['UserName'];
+
+// $title = $db->getForum(1)['Title'];
+
+// echo $title;
 
 // $posts = $db->getForumPosts(1);
 // foreach ($posts as $post)
 // {
-//     echo $post['Content'];
+//     echo $post['Content'] . "\n";
 // }
 
-// $db->saveForumPost(1, 164, 'test');
+// $db->saveForumPost(1, 164, htmlspecialchars(""));
 
 // echo $db->getPfp(164);
 

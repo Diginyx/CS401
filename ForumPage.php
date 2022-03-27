@@ -15,7 +15,7 @@
             ?>
         </div>
         <div class="ForumTopicList">
-            <?php include_once("ForumMainPage/TopicList.html") ; ?>
+            <?php include_once("ForumMainPage/TopicList.php") ; ?>
         </div>
     </div>
     <?php include_once("footer.html"); ?>

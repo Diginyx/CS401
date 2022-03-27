@@ -13,7 +13,7 @@
   $username = (isset($_POST["username"])) ? $_POST["username"] : "";
   $password = (isset($_POST["password"])) ? $_POST["password"] : "";
 
-  if(!$dao->getUser($username))
+  if(!$dao->getUserID($username))
   {
 
     $imagePath = '';
