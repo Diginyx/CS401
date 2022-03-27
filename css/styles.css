@@ -53,10 +53,25 @@ p {
     align-items: center;
 }
 
+#header-left, #header-right {
+    display: table-cell;
+    margin-left: 0px;
+}
+
+#header-left {
+    width: 100%;
+}
+
 #Logo {
     float: left;
     width: 100px;
     height: auto;
+}
+
+#headerpfp {
+    float: right;
+    width: 100px;
+    height: auto;  
 }
 
 #Navbar {
@@ -334,7 +349,7 @@ input[type=button], input[type=submit], input[type=reset] {
 /* SignInPage */
 
 /*
-#username {
+#user {
     width: auto;
 }
 

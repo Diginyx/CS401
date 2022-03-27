@@ -8,9 +8,19 @@ session_start();
   <!-- <base href="https://torrestech.herokuapp.com/ForumMainPage.php"> -->
 </head>
 <body>
-  <div id="Header">
+  <div id="header">
+    <div id="header-left">
       <img src="Tower.jpeg" id="Logo">
       <h1 id=""> Torres Tech </h1>
+    </div>
+    <div id="header-right">
+    <?php
+      if (isset($_SESSION["access_granted"]) && $_SESSION["access_granted"]) {
+        echo "<p id='welcome'> Hello " . $_SESSION['username'] . "! <p>";
+        echo "<img src=" . $_SESSION['ProfilePicture'] . " id='headerpfp'>";
+      }
+    ?>
+    </div>
   </div>
   <div id="Navbar">
     <ul>
@@ -37,10 +47,15 @@ session_start();
     }else{
     ?>
       <a href="SignInPage.php">
-              <button id="sign-in" class="navitem">
-                Sign In
-              </button>
-            </a>
+        <button id="sign-in" class="navitem">
+          Sign In
+        </button>
+      </a>
+      <a href="SignUpPage.php">
+        <button id="sign-in" class="navitem">
+          Sign Up
+        </button>
+      </a>
     <?php
     }
     ?>

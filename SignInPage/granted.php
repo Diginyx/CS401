@@ -8,7 +8,7 @@ if (isset($_SESSION["access_granted"]) && !$_SESSION["access_granted"] ||
   header("Location:../SignInPage.php");
 }
 
-header("Location:../SignInPage.php");
+header("Location:../ForumMainPage.php");
 ?>
   
 <a href="logout.php">Logout</a>

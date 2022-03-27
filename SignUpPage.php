@@ -1,16 +1,6 @@
 <?php
-// SignInPage.php
+// SignUpPage.php
 session_start();
-
-  if (isset($_SESSION["access_granted"]) && $_SESSION["access_granted"]) {
-    if (isset($_SESSION["access_granted"]) && !$_SESSION["access_granted"] ||
-      !isset($_SESSION["access_granted"])) {
-      $_SESSION["status"] = "You need to log in first";
-      header("Location:../SignInPage.php");
-    }
-
-    $_SESSION["status"] = "ACCESS GRANTED";
-  }
 
   $username = "";
   if (isset($_SESSION["username_preset"])) {
@@ -20,7 +10,7 @@ session_start();
 
 <html>
     <?php include_once("header.php"); ?>
-    <h2 id="UserGeneratorHeader">Login</h2>
+    <h2 id="UserGeneratorHeader">Sign Up</h2>
     <?php
     if (isset($_SESSION["status"])) {
       echo "<div id='status'>" .  $_SESSION["status"] . "</div>";
@@ -28,12 +18,12 @@ session_start();
     }
     ?>
     <div class="container center" id="SignInContainer">
-        <form action="SignInPage/login_handler.php" method="POST">
+        <form action="SignUpPage/signup_handler.php" method="POST" enctype="multipart/form-data">
             <div>
-                <label for="username">username</label>
+                <label for="username">Username</label>
             </div>
             <div>
-                <input type="text" id="username" name="username" placeholder="Enter Username Here" value="<?php echo $username; ?>">
+                <input type="text" id="username" name="username" placeholder="Enter Username Here">
             </div>
             <div>
                 <label for="password">Password</label>
@@ -41,8 +31,12 @@ session_start();
             <div>
                 <input type="text" id="password" name="password" placeholder="Enter Password Here">
             </div>
-            <div id="LoginButton">
-                <input type="submit" name="submit" id="login" value="Login"/>
+            <div>
+                Profile Picture:
+                <input type="file" name="img" id="img"><br>
+            </div>
+            <div id="SignUpButton">
+                <input type="submit" name="submit" id="login" value="Sign Up"/>
             </div>
         </form>
     </div>
