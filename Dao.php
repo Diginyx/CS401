@@ -33,6 +33,31 @@ private $pass = "3a70776a";
         return $conn->query("SELECT * FROM blogcomment");
     }
 
+    public function saveForumPost ($forumID, $authorID, $content)
+    {
+        $conn = $this->getConnection();
+        $saveQuery =
+            "INSERT INTO forumpost
+            (ForumID, AuthorID, Content)
+            VALUES
+            (:ForumID, :AuthorID, :Content)";
+        $q = $conn->prepare($saveQuery);
+        $q->bindParam(":ForumID", $forumID);
+        $q->bindParam(":AuthorID", $authorID);
+        $q->bindParam(":Content", $content);
+        $q->execute();
+    }
+
+    public function getForumPosts($forumID) {
+        $conn = $this->getConnection();
+        $getQuery = "SELECT * FROM forumpost WHERE ForumID = :ForumID";
+        $q = $conn->prepare($getQuery);
+        $q->bindParam(":ForumID", $forumID);
+        $q->execute();
+        $result = $q->fetchAll();
+        return $result;
+    }
+
     public function saveUser ($userName, $password, $UserRole, $ProfilePicture) {
         $conn = $this->getConnection();
         $saveQuery = 
@@ -97,6 +122,14 @@ private $pass = "3a70776a";
 }
 
 // $db = new Dao();
+
+// $posts = $db->getForumPosts(1);
+// foreach ($posts as $post)
+// {
+//     echo $post['Content'];
+// }
+
+// $db->saveForumPost(1, 164, 'test');
 
 // echo $db->getPfp(164);
 
