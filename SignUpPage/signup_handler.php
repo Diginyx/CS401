@@ -9,6 +9,7 @@
       'region'   => 'us-west-1',
   ]);
   $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
+  echo "<p>" . $bucket "</p>";
   // product/upload.php
 
   // save a product, including username, password, and an image path
