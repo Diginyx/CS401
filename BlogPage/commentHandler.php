@@ -12,14 +12,13 @@
     }
 
     if (isset($_SESSION['status'])) {
-        header("Location:../BlogPage.php?id=" . $_POST['pageID']);
+        header('Location: ../BlogMainPage.php');
         $_SESSION["title_preset"] = $title;
         $_SESSION["comment_preset"] = $comment;
         $_SESSION['sentiment'] = "bad";
         exit;
     }
 
-    $db->saveBlog($_SESSION['UserID'], $imagePath, $title, $description, $content);
     $status = "Comment Posted!!!";
     $_SESSION["status"][] = $status;
     $_SESSION['sentiment'] = "good";
