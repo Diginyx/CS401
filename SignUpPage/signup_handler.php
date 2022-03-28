@@ -1,5 +1,6 @@
 <?php
   session_start();
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   require_once "../Dao.php";
   $dao = new Dao();
   // product/upload.php
@@ -59,7 +60,6 @@
   }
 
   if (isset($_SESSION['status'])) {
-    echo "<pre>" . print_r($_POST, 1) . "</pre>";
     header('Location: ../SignUpPage.php');
     $_SESSION["username_preset"] = $username;
     $_SESSION['sentiment'] = "bad";
