@@ -246,6 +246,7 @@ private $pass = "3a70776a";
 }
 
 // $db = new Dao();
+// echo $db->getPfp(164);
 // $user = $db->verifyLogin("Diginyx", );
 // if($user)
 // {
