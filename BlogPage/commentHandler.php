@@ -22,7 +22,6 @@
     $status = "Comment Posted!!!";
     $_SESSION["status"][] = $status;
     $_SESSION['sentiment'] = "good";
-    header("Location:../BlogMainPage.php");
     $db->saveComment($_POST['pageID'], $_SESSION['UserID'], $_POST['comment']);
     header("Location:../BlogPage.php?id=" . $_POST['pageID']);
 ?>
