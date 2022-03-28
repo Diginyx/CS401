@@ -28,6 +28,7 @@ if (isset($_SESSION['status'])) {
 }
 echo "<pre>" . print_r($_POST, 1) . "</pre>";
 $user = $db->verifyLogin($username, $password);
+echo "<pre>" . print_r($_POST, 1) . "</pre>";
 if ($user) {
   $_SESSION['username'] = $username;
   $userID = $db->getUserID($username);
