@@ -51,18 +51,8 @@
       $_SESSION["status"][] = $status;
     }
   }
-  if ($_FILES["image"]["size"] > 0) {
-    if ($_FILES["image"]["error"] > 0) {
-      throw new Exception("Error: " . $_FILES["image"]["error"]);
-    } else {
-      $basePath = "/home/josue/Desktop/cs401";
-      $imagePath = "/user_images/" . uniqid() . ".png";
-      if (!move_uploaded_file($_FILES["image"]["tmp_name"], $basePath . $imagePath)) {
-        throw new Exception("File move failed");
-      }
-    }
-  }
-  else
+
+  if (empty($_POST['pfp_url']))
   {
     $status = "Profile Picture Missing";
     $_SESSION["status"][] = $status;
@@ -74,7 +64,7 @@
     $_SESSION['sentiment'] = "bad";
     exit;
   }
-  $dao->saveUser($username, $password, 'user', $imagePath);
+  $dao->saveUser($username, $password, 'user', $_POST['pfp_url']);
   $status = "Account Created!!!";
   $_SESSION["status"][] = $status;
   $_SESSION['sentiment'] = "good";

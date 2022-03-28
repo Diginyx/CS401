@@ -35,7 +35,7 @@ if (isset($_SESSION["content_preset"])) {
         </div>
         <div>
             Cover Image:
-            <input type="file" name="img" id="img"><br>
+            <input type="hidden" name="cover_image_url" id="cover_image_url" class="simple-file-upload">
         </div>
         <div id="submit-button">
             <input type="submit" value="Submit Blog">

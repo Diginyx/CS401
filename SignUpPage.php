@@ -38,7 +38,7 @@ session_start();
             </div>
             <div>
                 Profile Picture:
-                <input type="file" name="image" id="image"><br>
+                <input type="hidden" name="pfp_url" id="pfp_url" class="simple-file-upload">
             </div>
             <div id="SignUpButton">
                 <input type="submit" name="submit" id="login" value="Sign Up"/>

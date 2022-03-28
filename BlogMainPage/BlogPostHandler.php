@@ -20,27 +20,12 @@
     $_SESSION["status"][] = $status;
   }
 
-  if(strlen($content) == 0)
+  if (empty($_POST['cover_image_url']))
   {
-    $status = "Content missing";
+    $status = "Profile Picture Missing";
     $_SESSION["status"][] = $status;
   }
-  if ($_FILES["img"]["size"] > 0) {
-    if ($_FILES["img"]["error"] > 0) {
-      throw new Exception("Error: " . $_FILES["img"]["error"]);
-    } else {
-      $basePath = "/home/josue/Desktop/cs401";
-      $imagePath = "/user_images/" . uniqid() . ".png";
-      if (!move_uploaded_file($_FILES["img"]["tmp_name"], $basePath . $imagePath)) {
-        throw new Exception("File move failed");
-      }
-    }
-  }
-  else
-  {
-    $status = "Cover Image Missing";
-    $_SESSION["status"][] = $status;
-  }
+
 
   if (isset($_SESSION['status'])) {
     header('Location: ../BlogMainPage.php');
@@ -51,7 +36,7 @@
     exit;
   }
 
-  $db->saveBlog($_SESSION['UserID'], $imagePath, $title, $description, $content);
+  $db->saveBlog($_SESSION['UserID'], $_POST['cover_image_url'], $title, $description, $content);
   $status = "Blog Created!!!";
   $_SESSION["status"][] = $status;
   $_SESSION['sentiment'] = "good";
