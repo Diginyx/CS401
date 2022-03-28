@@ -1,26 +1,34 @@
-
-<html>
-    <?php include_once("header.php"); ?>
-    <?php include_once("BlogMainPage/BlogGrid.html"); ?>
-    <div class="grid-container">
-        <div class="grid-item">
-            <?php include("BlogMainPage/BlogBlock.php?id=1"); ?>
-        </div>
-        <div class="grid-item">
-            <?php include("BlogMainPage/BlogBlock.html"); ?>
-        </div>
-        <div class="grid-item">
-            <?php include("BlogMainPage/BlogBlock.html"); ?>
-        </div>
-        <div class="grid-item">
-            <?php include("BlogMainPage/BlogBlock.html"); ?>
-        </div>
-        <div class="grid-item">
-            <?php include("BlogMainPage/BlogBlock.html"); ?>
-        </div>
-        <div class="grid-item">
-            <?php include("BlogMainPage/BlogBlock.html"); ?>
-        </div>
-    </div>
-    <?php include_once("footer.html"); ?>
-</html>
+<?php
+    require_once "Dao.php";
+    $db = new Dao();
+    $blogs = $db->getBlogs();
+    echo "<html>";
+    include_once("header.php");
+    include_once("BlogMainPage/BlogGrid.html");
+    echo "<div class='grid-container'>";
+    foreach ($blogs as $blog)
+    {
+        echo "<div class='grid-item'>";
+        echo "<div id='blog-block'>";
+        echo "<a href='BlogPage.php?id=" . $blog['BlogID'] . "'>";
+        echo "<div id='blog-block-img'>";
+        echo "<img src=" . $blog['CoverImage'] . " class='blog-background-img'>";
+        echo "</div>";
+        echo "<div id='blog-block-info'>";
+        echo "<h2>" . $blog['Title'] . "</h2>";
+        echo "<p>" . $blog['Description'] . "</p>";
+        echo "</div>";
+        echo "</a>";
+        echo '</div>';
+        echo "</div>";
+    }
+    echo "</div>";
+    if (isset($_SESSION["access_granted"]) && $_SESSION["access_granted"])
+    {
+        include_once("BlogMainPage/BlogGenerator.php");
+    }else{
+        echo "<h3>" . 'Sign in to post blogs' . "</h3>";
+    }
+    include_once("footer.html");
+    echo "</html>";
+?>

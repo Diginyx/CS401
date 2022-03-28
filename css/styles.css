@@ -237,7 +237,7 @@ input[type=button], input[type=submit], input[type=reset] {
     font-size: 40px;
 }
 
-.forum-post {
+.forum-post, .blogtext {
     height: auto;
     word-wrap: break-word;
 }

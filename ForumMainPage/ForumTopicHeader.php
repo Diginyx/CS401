@@ -14,7 +14,7 @@
         echo "<h4>" . $forum['Title'] . "</h4>";
         echo "<p> Author: " . $db->getUsername($forum['AuthorID']) . "</p>";
         echo "<p> Date Posted: " . $forum['Date'] . "</p>";
-        echo "<p> Description: " . nl2br(str_replace(' ', '&nbsp;', $forum['Description'])) . "</p>";
+        echo "<p> Description: " . nl2br(str_replace(' ', '&nbsp;', htmlspecialchars($forum['Description']))) . "</p>";
         echo "</div>";
         echo "<div class='forum-summary-stats'>";
         echo "<p>x replies</p>";

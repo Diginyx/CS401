@@ -11,23 +11,29 @@ private $pass = "3a70776a";
             $this->pass);
     }
 
-    public function saveComment ($authorID, $content) {
+    public function saveComment ($blogID, $authorID, $content) {
         echo $authorID . "\n" . $content . "\n";
         $conn = $this->getConnection();
         $saveQuery =
             "INSERT INTO blogcomment
-            (AuthorID, Content)
+            (BlogID, AuthorID, Content)
             VALUES
-            (:AuthorID, :Content)";
+            (:BlogID, :AuthorID, :Content)";
         $q = $conn->prepare($saveQuery);
+        $q->bindParam(":BlogID", $blogID);
         $q->bindParam(":AuthorID", $authorID);
         $q->bindParam(":Content", $content);
         $q->execute();
     }
 
-    public function getComments () {
+    public function getComments ($BlogID) {
         $conn = $this->getConnection();
-        return $conn->query("SELECT * FROM blogcomment");
+        $getQuery = "SELECT * FROM blogcomment WHERE BlogID= :BlogID";
+        $q = $conn->prepare($getQuery);
+        $q->bindParam(":BlogID", $BlogID);
+        $q->execute();
+        $result = $q->fetchAll();
+        return $result;
     }
 
     public function saveForumPost ($forumID, $authorID, $content)
@@ -83,6 +89,22 @@ private $pass = "3a70776a";
     public function getForums() {
         $conn = $this->getConnection();
         return $conn->query("SELECT * FROM forum");
+    }
+
+    public function saveBlog ($authorID, $coverImage, $title, $description, $content) {
+        $conn = $this->getConnection();
+        $saveQuery =
+            "INSERT INTO blog
+            (AuthorID, CoverImage, Title, Description, Content)
+            VALUES
+            (:AuthorID, :CoverImage, :Title, :Description, :Content)";
+        $q = $conn->prepare($saveQuery);
+        $q->bindParam(":AuthorID", $authorID);
+        $q->bindParam(":CoverImage", $coverImage);
+        $q->bindParam(":Title", $title);
+        $q->bindParam(":Description", $description);
+        $q->bindParam(":Content", $content);
+        $q->execute();
     }
 
     public function getBlogs() {
@@ -141,6 +163,16 @@ private $pass = "3a70776a";
         return reset($result);
     }
 
+    public function getBlog($ID) {
+        $conn = $this->getConnection();
+        $getQuery = "SELECT * FROM blog WHERE BlogID = :BlogID";
+        $q = $conn->prepare($getQuery);
+        $q->bindParam(":BlogID", $ID);
+        $q->execute();
+        $result = $q->fetchAll();
+        return reset($result);
+    }
+
     public function getPfp($ID) {
         $conn = $this->getConnection();
         $getQuery = "SELECT ProfilePicture FROM user WHERE UserID = :UserID";
@@ -163,12 +195,14 @@ private $pass = "3a70776a";
 
 }
 
-$db = new Dao();
-$blogs = $db->getBlogs();
-foreach ($blogs as $blog)
-{
-    echo $blog['BlogID'] . "\n";
-}
+// $db = new Dao();
+// $db->saveBlog(164, 'images/BlogBackground.jpeg', 'Blog Title3', 'description3', 'test3');
+// echo $db->getBlog(1)['BlogID'];
+// $blogs = $db->getBlogs();
+// foreach ($blogs as $blog)
+// {
+//     echo $blog['BlogID'] . "\n";
+// }
 // $forums = $db->getForums();
 // foreach ($forums as $forum)
 // {
@@ -193,7 +227,7 @@ foreach ($blogs as $blog)
 // echo $db->getPfp(164);
 
 
-// $comments = $db->getComments();
+// $comments = $db->getComments(2);
 // foreach ($comments as $comment)
 // {
 //     echo $comment['Content'] . "\n";

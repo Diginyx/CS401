@@ -1,12 +1,13 @@
 <html>
     <?php include_once("header.php"); ?>
-    <?php include_once("BlogPage/BlogHeader.html"); ?>
-    <?php include_once("BlogPage/BlogPost.html"); ?>
+    <?php include_once("BlogPage/BlogHeader.php"); ?>
+    <?php include_once("BlogPage/BlogPost.php"); ?>
     <div id="blog-comments" class="container">
+        <h2>Comments</h2>
         <?php
             require_once('Dao.php');
             $db = new Dao();
-            $comments = $db->getComments();
+            $comments = $db->getComments($_GET['id']);
             foreach ($comments as $comment)
             {
                 $pfp = $db->getPfp($comment['AuthorID']);
@@ -23,10 +24,10 @@
         if (isset($_SESSION["access_granted"]) && $_SESSION["access_granted"])
         {
     ?>
-        <?php include_once("BlogPage/CommentGenerator.html"); ?>
+        <?php include_once("BlogPage/CommentGenerator.php"); ?>
     <?php 
         }else{
-            echo "<h3>" . 'Sign in to create topic' . "</h3>";
+            echo "<h3>" . 'Sign in to post comments' . "</h3>";
         }
     ?>
     <?php include_once("footer.html"); ?>
