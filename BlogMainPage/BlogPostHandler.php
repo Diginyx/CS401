@@ -25,13 +25,13 @@
     $status = "Content missing";
     $_SESSION["status"][] = $status;
   }
-  if ($_FILES["image"]["size"] > 0) {
-    if ($_FILES["image"]["error"] > 0) {
-      throw new Exception("Error: " . $_FILES["image"]["error"]);
+  if ($_FILES["img"]["size"] > 0) {
+    if ($_FILES["img"]["error"] > 0) {
+      throw new Exception("Error: " . $_FILES["img"]["error"]);
     } else {
       $basePath = "/home/josue/Desktop/cs401";
       $imagePath = "/user_images/" . uniqid() . ".png";
-      if (!move_uploaded_file($_FILES["image"]["tmp_name"], $basePath . $imagePath)) {
+      if (!move_uploaded_file($_FILES["img"]["tmp_name"], $basePath . $imagePath)) {
         throw new Exception("File move failed");
       }
     }
