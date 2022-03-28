@@ -1,12 +1,11 @@
 <?php
-// SignUpPage.php
-session_start();
-
-  $username = "";
-  if (isset($_SESSION["username_preset"])) {
-    $username = $_SESSION["username_preset"];
-    unset($_SESSION["username_preset"]);
-  }
+    // SignUpPage.php
+    session_start();
+    $username = "";
+    if (isset($_SESSION["username_preset"])) {
+        $username = $_SESSION["username_preset"];
+        unset($_SESSION["username_preset"]);
+    }
 ?>
 
 <html>

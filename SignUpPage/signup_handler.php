@@ -2,6 +2,13 @@
   session_start();
   require_once "../Dao.php";
   $dao = new Dao();
+  require('../vendor/autoload.php');
+  // this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
+  $s3 = new Aws\S3\S3Client([
+      'version'  => 'latest',
+      'region'   => 'us-west-1',
+  ]);
+  $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
   // product/upload.php
 
   // save a product, including username, password, and an image path
@@ -51,22 +58,18 @@
       $_SESSION["status"][] = $status;
     }
   }
-  if ($_FILES["image"]["size"] > 0) {
-    if ($_FILES["image"]["error"] > 0) {
-      throw new Exception("Error: " . $_FILES["image"]["error"]);
-    } else {
-      $basePath = "/home/josue/Desktop/cs401";
-      $imagePath = "/user_images/" . uniqid() . ".png";
-      if (!move_uploaded_file($_FILES["image"]["tmp_name"], $basePath . $imagePath)) {
-        throw new Exception("File move failed");
-      }
-    }
-  }
-  else
+  if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) 
   {
-    $status = "Profile Picture Missing";
-    $_SESSION["status"][] = $status;
-  }
+    // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
+    try 
+    {
+      // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
+      $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
+    } 
+    catch(Exception $e) {
+            
+    } 
+  } 
 
   if (isset($_SESSION['status'])) {
     header('Location: ../SignUpPage.php');
