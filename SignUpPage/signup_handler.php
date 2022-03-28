@@ -4,12 +4,14 @@
   $dao = new Dao();
   require('../vendor/autoload.php');
   // this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
+  echo "<p> hello </p>";
   $s3 = new Aws\S3\S3Client([
       'version'  => 'latest',
       'region'   => 'us-west-1',
   ]);
+  echo "<p> hello 2 </p>";
   $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
-  echo "<p>" . $bucket . "</p>";
+  echo "<p> Bucket: " . $bucket . "</p>";
   // product/upload.php
 
   // save a product, including username, password, and an image path
