@@ -20,6 +20,8 @@
     $_SESSION["status"][] = $status;
   }
 
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
+
   if(strlen($password) == 0)
   {
     $status = "Password missing";
