@@ -18,11 +18,11 @@
 
   echo "<pre>" . print_r($_POST, 1) . "</pre>";
 
-  if($dao->getUserID($username))
-  {
-    $status = "Username already in use";
-    $_SESSION["status"][] = $status;
-  }
+  // if($dao->getUserID($username))
+  // {
+  //   $status = "Username already in use";
+  //   $_SESSION["status"][] = $status;
+  // }
 
   echo "<pre>" . print_r($_POST, 1) . "</pre>";
 
