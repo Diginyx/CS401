@@ -8,11 +8,15 @@
   $username = (isset($_POST["username"])) ? $_POST["username"] : "";
   $password = (isset($_POST["password"])) ? $_POST["password"] : "";
 
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
+
   if(strlen($username) == 0)
   {
     $status = "Username missing";
     $_SESSION["status"][] = $status;
   }
+
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
 
   if($dao->getUserID($username))
   {
