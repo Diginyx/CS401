@@ -5,6 +5,7 @@ session_start();
   <title>Torres Tech</title>
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
   <link rel="icon" type="image/x-icon" href="/Tower.jpeg">
+  <script src="https://app.simplefileupload.com/buckets/01257579e61a10225f2cce2ccebc59ca.js"></script>
   <!-- <base href="https://torrestech.herokuapp.com/ForumMainPage.php"> -->
 </head>
 <body>
