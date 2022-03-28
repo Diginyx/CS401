@@ -11,7 +11,7 @@ if (isset($_SESSION["comment_preset"])) {
             echo '<input type="hidden" id="pageID" name="pageID" value=' . $_GET['id'] . '>';
         ?>
         <div>
-            <textarea type="text" id="comment" name="comment" placeholder="Enter Comment Here"><?php echo $comment; ?></textarea>
+            <textarea type="text" id="comment" name="comment" placeholder="Enter Comment Here"></textarea>
         </div>
         <div class="sumbit-button">
             <input type="submit" value="Submit Comment">
