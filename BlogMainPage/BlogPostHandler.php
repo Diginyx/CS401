@@ -1,5 +1,4 @@
 <?php
-    echo "<pre>" . print_r($_FILES, 1) . "</pre>";
     session_start();
     require_once "../Dao.php";
     $db = new Dao();

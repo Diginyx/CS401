@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "Dao.php";
     $db = new Dao();
     $blogs = $db->getBlogs();
@@ -17,6 +18,10 @@
         echo "<div id='blog-block-info'>";
         echo "<h2>" . $blog['Title'] . "</h2>";
         echo "<p>" . $blog['Description'] . "</p>";
+        if($blog['AuthorID'] == $_SESSION['UserID'])
+        {
+            echo "<div class='delete'><a href='BlogMainPage/DeleteBlogHandler.php?blogID={$blog['BlogID']}'>Delete</a></div>";
+        }
         echo "</div>";
         echo "</a>";
         echo '</div>';

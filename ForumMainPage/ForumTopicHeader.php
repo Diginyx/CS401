@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "Dao.php";
     $db = new Dao();
     $forums = $db->getForums();
@@ -20,6 +21,10 @@
         echo "<p>x replies</p>";
         echo "<p>x views</p>";
         echo "</div>";
+        if($forum['AuthorID'] == $_SESSION['UserID'])
+        {
+            echo "<div class='delete'><a href='ForumMainPage/ForumDeleteHandler.php?forumID={$forum['ForumID']}'>Delete</a></div>";
+        }
         echo "</div>";
         echo "</li>";
         echo "</a>";

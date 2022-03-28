@@ -36,6 +36,56 @@ private $pass = "3a70776a";
         return $result;
     }
 
+    public function deleteComment ($id) {
+       $conn = $this->getConnection();
+       $deleteQuery = "DELETE FROM blogcomment WHERE CommentID = :id";
+       $q = $conn->prepare($deleteQuery);
+       $q->bindParam(":id", $id);
+       $q->execute();
+    }
+
+    public function deleteForumPost ($id) {
+        $conn = $this->getConnection();
+        $deleteQuery = "DELETE FROM forumpost WHERE PostID = :id";
+        $q = $conn->prepare($deleteQuery);
+        $q->bindParam(":id", $id);
+        $q->execute();
+     }
+
+    public function deleteComments ($id) {
+        $conn = $this->getConnection();
+        $deleteQuery = "DELETE FROM blogcomment WHERE BlogID = :id";
+        $q = $conn->prepare($deleteQuery);
+        $q->bindParam(":id", $id);
+        $q->execute();
+    }
+
+    public function deleteBlog ($id) {
+        $this->deleteComments($id);
+        $conn = $this->getConnection();
+        $deleteQuery = "DELETE FROM blog WHERE BlogID = :id";
+        $q = $conn->prepare($deleteQuery);
+        $q->bindParam(":id", $id);
+        $q->execute();
+    }
+
+    public function deleteForumPosts ($id) {
+        $conn = $this->getConnection();
+        $deleteQuery = "DELETE FROM forumpost WHERE ForumID = :id";
+        $q = $conn->prepare($deleteQuery);
+        $q->bindParam(":id", $id);
+        $q->execute();
+    }
+
+    public function deleteForum ($id) {
+        $this->deleteForumPosts($id);
+        $conn = $this->getConnection();
+        $deleteQuery = "DELETE FROM forum WHERE ForumID = :id";
+        $q = $conn->prepare($deleteQuery);
+        $q->bindParam(":id", $id);
+        $q->execute();
+    }
+
     public function saveForumPost ($forumID, $authorID, $content)
     {
         $conn = $this->getConnection();
@@ -196,6 +246,7 @@ private $pass = "3a70776a";
 }
 
 // $db = new Dao();
+// $db->deleteBlog(4);
 // $db->saveBlog(164, 'images/BlogBackground.jpeg', 'Blog Title3', 'description3', 'test3');
 // echo $db->getBlog(1)['BlogID'];
 // $blogs = $db->getBlogs();

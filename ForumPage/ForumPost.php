@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "Dao.php";
     $db = new Dao();
 
@@ -17,6 +18,10 @@
             echo "<p>" . htmlspecialchars($post['Date']) . "</p>";
             echo "<p>" . nl2br(str_replace(' ', '&nbsp;', htmlspecialchars($post['Content']))) . "</p>";
             echo "</div>";
+            if($post['AuthorID'] == $_SESSION['UserID'])
+            {
+                echo "<div class='delete'><a href='ForumPage/ForumPostDeleteHandler.php?postID={$post['PostID']}&pageID={$_GET['id']}'>Delete</a></div>";
+            }
             echo "<hr>";
         }
     }

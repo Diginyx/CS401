@@ -5,6 +5,7 @@
     <div id="blog-comments" class="container">
         <h2>Comments</h2>
         <?php
+            session_start();
             require_once('Dao.php');
             $db = new Dao();
             $comments = $db->getComments($_GET['id']);
@@ -16,6 +17,10 @@
                 echo "<div> <img src=" . $pfp . " id='blog-comment-pfp'> </div>";
                 echo "<h3>" . $username . "</h3>";
                 echo "<div> <p>" . $comment['Content'] . "</p> </div>";
+                if($comment['AuthorID'] == $_SESSION['UserID'])
+                {
+                    echo "<div class='delete'><a href='BlogPage/DeleteCommentHandler.php?commentID={$comment['CommentID']}&pageID={$_GET['id']}'>Delete</a></div>";
+                }
                 echo "<hr>";
             }
         ?>

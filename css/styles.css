@@ -316,6 +316,21 @@ input[type=button], input[type=submit], input[type=reset] {
     height: 100px;
 }
 
+.delete > a {
+  text-align: center;
+  color: red;
+}
+
+.delete {
+  width: 15px;
+
+}
+
+.delete:hover > a {
+  text-decoration: underline;
+  cursor:pointer;
+}
+
 #blog-header {
     border: 3px solid green;
 }
