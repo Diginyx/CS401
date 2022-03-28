@@ -25,8 +25,8 @@
                 $username = $db->getUsername($comment['AuthorID']);
 
                 echo "<div> <img src=" . $pfp . " id='blog-comment-pfp'> </div>";
-                echo "<h3>" . $username . "</h3>";
-                echo "<div> <p>" . $comment['Content'] . "</p> </div>";
+                echo "<h3>" . htmlspecialchars($username) . "</h3>";
+                echo "<div> <p>" . htmlspecialchars($comment['Content']) . "</p> </div>";
                 if($comment['AuthorID'] == $_SESSION['UserID'])
                 {
                     echo "<div class='delete'><a href='BlogPage/DeleteCommentHandler.php?commentID={$comment['CommentID']}&pageID={$_GET['id']}'>Delete</a></div>";

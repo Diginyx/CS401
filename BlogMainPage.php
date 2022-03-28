@@ -24,8 +24,8 @@
         echo "<img src=" . $blog['CoverImage'] . " class='blog-background-img'>";
         echo "</div>";
         echo "<div id='blog-block-info'>";
-        echo "<h2>" . $blog['Title'] . "</h2>";
-        echo "<p>" . $blog['Description'] . "</p>";
+        echo "<h2>" . htmlspecialchars($blog['Title']) . "</h2>";
+        echo "<p>" . htmlspecialchars($blog['Description']) . "</p>";
         if($blog['AuthorID'] == $_SESSION['UserID'])
         {
             echo "<div class='delete'><a href='BlogMainPage/DeleteBlogHandler.php?blogID={$blog['BlogID']}'>Delete</a></div>";

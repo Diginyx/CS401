@@ -12,9 +12,9 @@
         echo "<li>";
         echo "<div class='forum-summary'>";
         echo "<div class='forum-summary-main-info'>";
-        echo "<h4>" . $forum['Title'] . "</h4>";
-        echo "<p> Author: " . $db->getUsername($forum['AuthorID']) . "</p>";
-        echo "<p> Date Posted: " . $forum['Date'] . "</p>";
+        echo "<h4>" . htmlspecialchars($forum['Title']) . "</h4>";
+        echo "<p> Author: " . htmlspecialchars($db->getUsername($forum['AuthorID'])) . "</p>";
+        echo "<p> Date Posted: " . htmlspecialchars($forum['Date']) . "</p>";
         echo "<p> Description: " . nl2br(str_replace(' ', '&nbsp;', htmlspecialchars($forum['Description']))) . "</p>";
         echo "</div>";
         echo "<div class='forum-summary-stats'>";

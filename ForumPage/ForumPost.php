@@ -15,6 +15,7 @@
         {
             echo "<div class='forum-post'>";
             echo "<img src=" . $db->getPfp($post['AuthorID']) . " class='forum-post-pfp'>"; 
+            echo "<h3>" . htmlspecialchars($db->getUsername($post['AuthorID'])) . "</h3>";
             echo "<p>" . htmlspecialchars($post['Date']) . "</p>";
             echo "<p>" . nl2br(str_replace(' ', '&nbsp;', htmlspecialchars($post['Content']))) . "</p>";
             echo "</div>";

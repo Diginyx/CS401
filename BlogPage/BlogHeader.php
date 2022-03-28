@@ -6,7 +6,7 @@
     echo "<div id='blog-header'>";
     echo "<div id='blog-header-image-div'>";
     echo "<img src=" . $blog['CoverImage'] . " id='blog-header-img'>";
-    echo "<div class='centered'>" . $blog['Title'] . "</div>";
+    echo "<div class='centered'>" . htmlspecialchars($blog['Title']) . "</div>";
     echo "</div>";
     echo "<div id='blog-header-description' class='float-parent-element'>";
     echo "<p id='blog-comments'> x Comments</p>";

@@ -7,7 +7,7 @@
     echo "<ol>";
     foreach ($forums as $forum)
     {
-        echo "<a href='ForumPage.php?id=" . $forum['ForumID'] . "'><li>" . $forum['Title'] . "</li></a>";
+        echo "<a href='ForumPage.php?id=" . $forum['ForumID'] . "'><li>" . htmlspecialchars($forum['Title']) . "</li></a>";
     }
     echo "</ol>";
     echo "</div>"
