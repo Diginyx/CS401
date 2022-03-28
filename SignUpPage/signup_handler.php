@@ -1,40 +1,82 @@
 <?php
   session_start();
-  // product/upload.php
   require_once "../Dao.php";
   $dao = new Dao();
-
-  // if(!empty($_FILES)) {
-  //   move_uploaded_file($_FILES['img']['tmp_name'], "/home/josue/Desktop/cs401/user_images/obiwan.png");
-  // }
-  // exit;
+  // product/upload.php
 
   // save a product, including username, password, and an image path
   $username = (isset($_POST["username"])) ? $_POST["username"] : "";
   $password = (isset($_POST["password"])) ? $_POST["password"] : "";
 
-  if(!$dao->getUserID($username))
+  if(strlen($username) == 0)
   {
+    $status = "Username missing";
+    $_SESSION["status"][] = $status;
+  }
 
-    $imagePath = '';
-    if (count($_FILES) > 0) {
-      if ($_FILES["img"]["error"] > 0) {
-        throw new Exception("Error: " . $_FILES["img"]["error"]);
-      } else {
-        $basePath = "/home/josue/Desktop/cs401";
-        $imagePath = "/user_images/" . uniqid() . ".png";
-        if (!move_uploaded_file($_FILES["img"]["tmp_name"], $basePath . $imagePath)) {
-          throw new Exception("File move failed");
-        }
+  if($dao->getUserID($username))
+  {
+    $status = "Username already in use";
+    $_SESSION["status"][] = $status;
+  }
+
+  if(strlen($password) == 0)
+  {
+    $status = "Password missing";
+    $_SESSION["status"][] = $status;
+  }
+  else {
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number = preg_match('@[0-9]@', $password);
+
+    if(strlen($password) < 8) 
+    {
+      $status = "Your Password Must Contain At Least 8 Characters";
+      $_SESSION["status"][] = $status;
+    }
+    if(!$uppercase)
+    {
+      $status = "Your Password Must Contain At Least 1 Uppercase Character";
+      $_SESSION["status"][] = $status;
+    }
+    if(!$lowercase)
+    {
+      $status = "Your Password Must Contain At Least 1 Lowercase Character";
+      $_SESSION["status"][] = $status;
+    }
+    if(!$number)
+    {
+      $status = "Your Password Must Contain At Least 1 Number";
+      $_SESSION["status"][] = $status;
+    }
+  }
+  if ($_FILES["image"]["size"] > 0) {
+    if ($_FILES["image"]["error"] > 0) {
+      throw new Exception("Error: " . $_FILES["image"]["error"]);
+    } else {
+      $basePath = "/home/josue/Desktop/cs401";
+      $imagePath = "/user_images/" . uniqid() . ".png";
+      if (!move_uploaded_file($_FILES["image"]["tmp_name"], $basePath . $imagePath)) {
+        throw new Exception("File move failed");
       }
     }
-
-    $dao->saveUser($username, $password, 'user', $imagePath);
-    header("Location:../ForumMainPage.php");
   }
   else
   {
-    $status = "Username already in use";
-    $_SESSION["status"] = $status;
-    header("Location:../SignUpPage.php");
+    $status = "Profile Picture Missing";
+    $_SESSION["status"][] = $status;
   }
+
+  if (isset($_SESSION['status'])) {
+    header('Location: ../SignUpPage.php');
+    $_SESSION["username_preset"] = $username;
+    $_SESSION['sentiment'] = "bad";
+    exit;
+  }
+  $dao->saveUser($username, $password, 'user', $imagePath);
+  $status = "Account Created!!!";
+  $_SESSION["status"][] = $status;
+  $_SESSION['sentiment'] = "good";
+  header("Location:../ForumMainPage.php");
+?>

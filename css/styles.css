@@ -1,5 +1,21 @@
 /* Miscellaenous */
 
+.bad {
+    color: white;
+    padding: 10 10;
+    margin: 10 0;
+    width: 33%;  
+    background-color: #B73239;
+}
+
+.good {
+    color: white;
+    padding: 10 10;
+    margin: 10 0;
+    width: 33%;  
+    background-color: #577D46;
+}
+
 ol li {
     list-style-type: none;
 }

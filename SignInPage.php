@@ -1,6 +1,6 @@
 <?php
-// SignInPage.php
-session_start();
+  // SignInPage.php
+  session_start();
 
   if (isset($_SESSION["access_granted"]) && $_SESSION["access_granted"]) {
     if (isset($_SESSION["access_granted"]) && !$_SESSION["access_granted"] ||
@@ -8,13 +8,12 @@ session_start();
       $_SESSION["status"] = "You need to log in first";
       header("Location:../SignInPage.php");
     }
-
-    $_SESSION["status"] = "ACCESS GRANTED";
   }
 
   $username = "";
   if (isset($_SESSION["username_preset"])) {
     $username = $_SESSION["username_preset"];
+    unset($_SESSION["username_preset"]);
   }
 ?>
 
@@ -23,8 +22,12 @@ session_start();
     <h2 id="UserGeneratorHeader">Login</h2>
     <?php
     if (isset($_SESSION["status"])) {
-      echo "<div id='status'>" .  $_SESSION["status"] . "</div>";
-      unset($_SESSION["status"]);
+        $statuses = $_SESSION["status"];
+        unset($_SESSION["status"]);
+        foreach ($statuses as $status)
+        {
+            echo "<div class='" . $_SESSION["sentiment"] . "'>" .  $status . "</div>";
+        }
     }
     ?>
     <div class="container center" id="SignInContainer">

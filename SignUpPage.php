@@ -5,6 +5,7 @@ session_start();
   $username = "";
   if (isset($_SESSION["username_preset"])) {
     $username = $_SESSION["username_preset"];
+    unset($_SESSION["username_preset"]);
   }
 ?>
 
@@ -13,8 +14,12 @@ session_start();
     <h2 id="UserGeneratorHeader">Sign Up</h2>
     <?php
     if (isset($_SESSION["status"])) {
-      echo "<div id='status'>" .  $_SESSION["status"] . "</div>";
-      unset($_SESSION["status"]);
+        $statuses = $_SESSION["status"];
+        unset($_SESSION["status"]);
+        foreach ($statuses as $status)
+        {
+            echo "<div class='" . $_SESSION["sentiment"] . "'>" .  $status . "</div>";
+        }
     }
     ?>
     <div class="container center" id="SignInContainer">
@@ -23,7 +28,7 @@ session_start();
                 <label for="username">Username</label>
             </div>
             <div>
-                <input type="text" id="username" name="username" placeholder="Enter Username Here">
+                <input type="text" id="username" name="username" placeholder="Enter Username Here" value=<?php echo $username; ?>>
             </div>
             <div>
                 <label for="password">Password</label>
@@ -33,7 +38,7 @@ session_start();
             </div>
             <div>
                 Profile Picture:
-                <input type="file" name="img" id="img"><br>
+                <input type="file" name="image" id="image"><br>
             </div>
             <div id="SignUpButton">
                 <input type="submit" name="submit" id="login" value="Sign Up"/>

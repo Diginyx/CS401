@@ -1,5 +1,15 @@
 <html>
     <?php include_once("header.php"); ?>
+    <?php
+    if (isset($_SESSION["status"])) {
+        $statuses = $_SESSION["status"];
+        unset($_SESSION["status"]);
+        foreach ($statuses as $status)
+        {
+            echo "<div class='" . $_SESSION["sentiment"] . "'>" .  $status . "</div>";
+        }
+    }
+    ?>
     <?php include_once("BlogPage/BlogHeader.php"); ?>
     <?php include_once("BlogPage/BlogPost.php"); ?>
     <div id="blog-comments" class="container">

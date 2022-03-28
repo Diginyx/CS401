@@ -35,8 +35,6 @@ session_start();
         $_SESSION["status"] = "You need to log in first";
         header("Location:../SignInPage.php");
       }
-
-      $_SESSION["status"] = "ACCESS GRANTED";
     ?>
             <a href="SignInPage/logout.php">
               <button id="sign-in" class="navitem">

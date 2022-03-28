@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION["comment_preset"])) {
+    $comment = $_SESSION["comment_preset"];
+    unset($_SESSION["comment_preset"]);
+}
+?>
 <h2 id="comment-generator-header">Create Comment</h2>
 <div class="generator-container container">
     <form action="BlogPage/commentHandler.php" method="POST">
@@ -5,7 +11,7 @@
             echo '<input type="hidden" id="pageID" name="pageID" value=' . $_GET['id'] . '>';
         ?>
         <div>
-            <textarea type="text" id="comment" name="comment" placeholder="Enter Comment Here"></textarea>
+            <textarea type="text" id="comment" name="comment" placeholder="Enter Comment Here"><?php echo $comment; ?></textarea>
         </div>
         <div class="sumbit-button">
             <input type="submit" value="Submit Comment">

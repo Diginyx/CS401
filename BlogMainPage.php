@@ -5,6 +5,14 @@
     $blogs = $db->getBlogs();
     echo "<html>";
     include_once("header.php");
+    if (isset($_SESSION["status"])) {
+        $statuses = $_SESSION["status"];
+        unset($_SESSION["status"]);
+        foreach ($statuses as $status)
+        {
+            echo "<div class='" . $_SESSION["sentiment"] . "'>" .  $status . "</div>";
+        }
+    }
     include_once("BlogMainPage/BlogGrid.html");
     echo "<div class='grid-container'>";
     foreach ($blogs as $blog)
