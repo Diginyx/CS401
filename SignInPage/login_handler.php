@@ -31,14 +31,23 @@ $user = $db->verifyLogin($username, $password);
 echo "<pre>" . print_r($_POST, 1) . "</pre>";
 if ($user) {
   $_SESSION['username'] = $username;
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   $userID = $db->getUserID($username);
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   $_SESSION['UserID'] = $userID;
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   $_SESSION['ProfilePicture'] = $db->getPfp($userID);
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   $_SESSION["access_granted"] = true;
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   $status = "You Have Been Signed In!!!";
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   $_SESSION["status"][] = $status;
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   $_SESSION['sentiment'] = "good";
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   header("Location:../ForumMainPage.php");
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
 } else {
   $status = "Invalid username or password";
   $_SESSION["status"][] = $status;
