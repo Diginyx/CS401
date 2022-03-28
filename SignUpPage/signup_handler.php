@@ -1,6 +1,5 @@
 <?php
   session_start();
-  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   require_once "../Dao.php";
   $dao = new Dao();
   // product/upload.php
@@ -58,6 +57,8 @@
     $status = "Profile Picture Missing";
     $_SESSION["status"][] = $status;
   }
+
+  echo "<pre>" . print_r($_POST, 1) . "</pre>";
 
   if (isset($_SESSION['status'])) {
     header('Location: ../SignUpPage.php');
