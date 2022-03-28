@@ -26,7 +26,7 @@ if (isset($_SESSION['status'])) {
   $_SESSION['sentiment'] = "bad";
   exit;
 }
-
+echo "<pre>" . print_r($_POST, 1) . "</pre>";
 $user = $db->verifyLogin($username, $password);
 if ($user) {
   $_SESSION['username'] = $username;
