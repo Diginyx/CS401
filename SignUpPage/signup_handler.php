@@ -51,7 +51,7 @@
       $_SESSION["status"][] = $status;
     }
   }
-
+  
   if (empty($_POST['pfp_url']))
   {
     $status = "Profile Picture Missing";
@@ -59,6 +59,7 @@
   }
 
   if (isset($_SESSION['status'])) {
+    echo "<pre>" . print_r($_POST, 1) . "</pre>";
     header('Location: ../SignUpPage.php');
     $_SESSION["username_preset"] = $username;
     $_SESSION['sentiment'] = "bad";

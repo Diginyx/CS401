@@ -20,6 +20,12 @@
     $_SESSION["status"][] = $status;
   }
 
+  if(strlen($content) == 0)
+  {
+    $status = "Content missing";
+    $_SESSION["status"][] = $status;
+  }
+
   if (empty($_POST['cover_image_url']))
   {
     $status = "Profile Picture Missing";
