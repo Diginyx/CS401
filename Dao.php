@@ -200,7 +200,7 @@ private $pass = "3a70776a";
         $q->bindParam(":Username", $username);
         $q->execute();
         $result = $q->fetch();
-        return reset($result);
+        return $result;
     }
 
     public function getUser($ID) {
@@ -246,6 +246,13 @@ private $pass = "3a70776a";
 }
 
 // $db = new Dao();
+// if($db->getUserID("fff"))
+// {
+//     echo "True";
+// }
+// else{
+//     echo "False";
+// }
 // $db->deleteBlog(4);
 // $db->saveBlog(164, 'images/BlogBackground.jpeg', 'Blog Title3', 'description3', 'test3');
 // echo $db->getBlog(1)['BlogID'];

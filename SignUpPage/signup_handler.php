@@ -8,23 +8,17 @@
   $username = (isset($_POST["username"])) ? $_POST["username"] : "";
   $password = (isset($_POST["password"])) ? $_POST["password"] : "";
 
-  echo "<pre>" . print_r($_POST, 1) . "</pre>";
-
   if(strlen($username) == 0)
   {
     $status = "Username missing";
     $_SESSION["status"][] = $status;
   }
 
-  echo "<pre>" . print_r($_POST, 1) . "</pre>";
-
-  // if($dao->getUserID($username))
-  // {
-  //   $status = "Username already in use";
-  //   $_SESSION["status"][] = $status;
-  // }
-
-  echo "<pre>" . print_r($_POST, 1) . "</pre>";
+  if($dao->getUserID($username))
+  {
+    $status = "Username already in use";
+    $_SESSION["status"][] = $status;
+  }
 
   if(strlen($password) == 0)
   {
@@ -57,16 +51,12 @@
       $_SESSION["status"][] = $status;
     }
   }
-
-  echo "<pre>" . print_r($_POST, 1) . "</pre>";
   
   if (empty($_POST['pfp_url']))
   {
     $status = "Profile Picture Missing";
     $_SESSION["status"][] = $status;
   }
-
-  echo "<pre>" . print_r($_POST, 1) . "</pre>";
 
   if (isset($_SESSION['status'])) {
     header('Location: ../SignUpPage.php');
