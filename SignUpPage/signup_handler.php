@@ -64,7 +64,8 @@
     $_SESSION['sentiment'] = "bad";
     exit;
   }
-  $dao->saveUser($username, $password, 'user', $_POST['pfp_url']);
+  $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+  $dao->saveUser($username, $hashed_password, 'user', $_POST['pfp_url']);
   $status = "Account Created!!!";
   $_SESSION["status"][] = $status;
   $_SESSION['sentiment'] = "good";

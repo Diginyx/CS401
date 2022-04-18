@@ -182,15 +182,14 @@ private $pass = "3a70776a";
         return $conn->query("SELECT * FROM user");
     }
 
-    public function verifyLogin($username, $password) {
+    public function verifyLogin($username) {
         $conn = $this->getConnection();
-        $getQuery = "SELECT * FROM user WHERE UserName = :UserName AND Password = :Password";
+        $getQuery = "SELECT Password FROM user WHERE UserName = :UserName";
         $q = $conn->prepare($getQuery);
         $q->bindParam(":UserName", $username);
-        $q->bindParam(":Password", $password);
         $q->execute();
-        $result = $q->fetchAll();
-        return reset($result);
+        $result = $q->fetch();
+        return $result;
     }
 
     public function getUserID($username) {

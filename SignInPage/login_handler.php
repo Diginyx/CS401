@@ -2,6 +2,14 @@
 require_once('../Dao.php');
 $db = new Dao();
 
+function debug_to_console($data) {
+  $output = $data;
+  if (is_array($output))
+      $output = implode(',', $output);
+
+  echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
+
 // login_handler.php
 session_start();
 
@@ -27,8 +35,8 @@ if (isset($_SESSION['status'])) {
   exit;
 }
 
-$user = $db->verifyLogin($username, $password);
-if ($user) {
+$password_hash = $db->verifyLogin($username)[0];
+if (password_verify($password, $password_hash)) {
   $_SESSION['username'] = $username;
   $userID = $db->getUserID($username)[0];
   $_SESSION['UserID'] = $userID;
@@ -40,6 +48,7 @@ if ($user) {
   header("Location:../ForumMainPage.php");
 } else {
   $status = "Invalid username or password";
+  $_SESSION['sentiment'] = "bad";
   $_SESSION["status"][] = $status;
   $_SESSION["username_preset"] = $username;
   $_SESSION["access_granted"] = false;
