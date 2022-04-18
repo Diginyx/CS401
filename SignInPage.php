@@ -21,30 +21,20 @@
     <?php include_once("header.php"); ?>
     <h2 id="UserGeneratorHeader">Login</h2>
     <?php
-    if (isset($_SESSION["status"])) {
-        $statuses = $_SESSION["status"];
-        unset($_SESSION["status"]);
-        foreach ($statuses as $status)
-        {
-            echo "<div class='" . $_SESSION["sentiment"] . "'>" .  $status . "</div>";
-        }
-    }
+    include_once("Utility/message.php");
     ?>
     <div class="container center" id="SignInContainer">
         <form action="SignInPage/login_handler.php" method="POST">
             <div>
-                <label for="username">username</label>
-            </div>
-            <div>
+                <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Enter Username Here" value="<?php echo $username; ?>">
             </div>
             <div>
-                <label for="password">Password</label>
-            </div>
-            <div>
-                <input type="text" id="password" name="password" placeholder="Enter Password Here">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password Here">
             </div>
             <div id="LoginButton">
+                <label for="Login"></label>
                 <input type="submit" name="submit" id="login" value="Login"/>
             </div>
         </form>

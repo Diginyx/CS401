@@ -24,8 +24,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
 <?php } catch(Exception $e) { ?>
         <p>Upload error :(</p>
 <?php } } ?>
-        <h2>Upload a file</h2>
         <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']?>" method="POST">
+            <label for="profile picture">Upload a file:</label>
             <input name="userfile" type="file"><input type="submit" value="Upload">
         </form>
     </body>

@@ -4,8 +4,14 @@ session_start();
 <head>
   <title>Torres Tech</title>
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
   <link rel="icon" type="image/x-icon" href="/Tower.jpeg">
   <script src="https://app.simplefileupload.com/buckets/1116efeb4cb1a00fd20907a18949ab3b.js"></script>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/fadeOut.js"></script>
+  <script src="js/activeNavbar.js"></script>
   <!-- <base href="https://torrestech.herokuapp.com/ForumMainPage.php"> -->
 </head>
 <body>
@@ -25,8 +31,8 @@ session_start();
   </div>
   <div id="Navbar">
     <ul>
-      <a href="ForumMainPage.php"><li class="links navitem">Forums</li></a>
-      <a href="BlogMainPage.php"><li class="links navitem">Blogs</li></a>
+      <li><a href="ForumMainPage.php" class="links navitem" id="ForumLink">Forums</a></li>
+      <li><a href="BlogMainPage.php" class="links navitem" id="BlogLink">Blogs</a></li>
     </ul>
     <div>
     <?php

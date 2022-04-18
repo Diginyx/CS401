@@ -18,8 +18,6 @@
         echo "<p> Description: " . nl2br(str_replace(' ', '&nbsp;', htmlspecialchars($forum['Description']))) . "</p>";
         echo "</div>";
         echo "<div class='forum-summary-stats'>";
-        echo "<p>x replies</p>";
-        echo "<p>x views</p>";
         echo "</div>";
         if($forum['AuthorID'] == $_SESSION['UserID'])
         {

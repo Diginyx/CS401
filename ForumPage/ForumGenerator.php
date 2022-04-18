@@ -11,9 +11,11 @@
             echo '<input type="hidden" id="pageID" name="pageID" value=' . $_GET['id'] . '>';
         ?>
         <div>
+            <label for="Forum Text">Forum Text:</label>
             <textarea type="text" id="ForumPost" name="ForumPost" placeholder="Enter Text Here"><?php echo $content; ?></textarea>
         </div>
         <div class="submit-button">
+            <label for="Submit Post"></label>
             <input type="submit" value="Submit Post">
         </div>
     </form>
